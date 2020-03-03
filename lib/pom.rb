@@ -28,6 +28,7 @@ default_gems = [
     ['rdoc', '${rdoc.version}'],
     ['scanf', '1.0.0'],
     ['webrick', '1.4.2'],
+    [ 'thread_safe', '0.3.6' ],
 ]
 
 bundled_gems = [
@@ -38,6 +39,26 @@ bundled_gems = [
     ['rake', '${rake.version}'],
     ['test-unit', '${test-unit.version}'],
     ['xmlrpc', '0.3.0'],
+    [ 'hoe', '3.17.0' ],
+    [ 'rspec', '3.2.0' ],
+    [ 'rspec-core', '3.2.3' ],
+    [ 'rspec-expectations', '3.2.1' ],
+    [ 'rspec-mocks', '3.2.1' ],
+    [ 'rspec-support', '3.2.2' ],
+    [ 'ruby-ole', '1.2.12.2' ],
+    [ 'spreadsheet', '1.2.6' ],
+    [ 'abstract_type', '0.0.7' ],
+    [ 'adamantium', '0.2.0' ],
+    [ 'ast', '2.4.0' ],
+    [ 'concord', '0.1.5' ],
+    [ 'diff-lcs', '1.3' ],
+    [ 'equalizer', '0.0.11' ],
+    [ 'ice_nine', '0.11.2' ],
+    [ 'memoizable', '0.4.2' ],
+    [ 'procto', '0.0.3' ],
+    [ 'parser', '2.7.0.4' ],
+    [ 'unparser', '0.4.7' ],
+
 ]
 
 project 'JRuby Lib Setup' do
@@ -204,7 +225,7 @@ project 'JRuby Lib Setup' do
         spec = Gem::Package.new( Dir[ File.join( cache, "#{gem_name}*.gem" ) ].first ).spec
 
         # copy bin files if the gem has any
-        bin = File.join( gems, "#{gem_name}", spec.bindir || 'bin' )        
+        bin = File.join( gems, "#{gem_name}", spec.bindir || 'bin' )
         if File.exists? bin
           Dir[ File.join( bin, '*' ) ].each do |f|
             log "copy to bin: #{File.basename( f )}"
